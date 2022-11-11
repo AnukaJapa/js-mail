@@ -1,24 +1,81 @@
-const authorizedMails = ["matteo@gmaiil.com", "fabio@gmail.com", "pietro@gmail.com","anna@gmail.com"];
+let authorizedMails = ["matteo@gmaiil.com", "fabio@gmail.com", "pietro@gmail.com","anna@gmail.com"];
 
 let mailInput = document.getElementById("mailInput");
-let button = document.getElementById("mailButton");
+let mailButton = document.getElementById("mailButton");
+let textDisplay = document.getElementById("result");
+let mailInputValue;
+let authorized =false;
+let valid =false;
 
 
-button.addEventListener("click", ()=>{
-   let mailInputValue = mailInput.value;
-   let authorized =false;
-   console.log(mailInputValue);
+mailButton.addEventListener("click", ()=>{
+   checkMailValid();
+   checkAuthorized();
+   displayResult();
+} )
 
-   for(let i =0; i<authorizedMails.length; i++){
-    if(authorizedMails[i] == mailInputValue){
-authorized = true;
-console.log("you are authorized");
-break;
+function checkMailValid(){
+    mailInputValue = mailInput.value;
+
+    if(mailInputValue==""){
+        console.log("invalid mail");
+        valid = false;
+    }else if(mailInputValue.includes("@")){
+        valid=true;
     }
-   }
-
-   if(!authorized){
-    console.log("this email is not authorized");
 }
 
-} )
+function checkAuthorized(){
+if(!valid) return;
+for(let i =0; i<authorizedMails.length; i++){
+    if(authorizedMails[i] == mailInputValue){
+
+authorized = true;
+    }
+   }
+}
+
+function displayResult(){
+if(!valid) {
+    console.log("your email is not valid!");
+    textDisplay.textContent= "your email is not valid";
+
+    return
+}
+    if(authorized){
+        textDisplay.textContent = "You are authorized!";
+        console.log("this email is authorized");
+    }else {
+
+
+        textDisplay.textContent = `You are not authorized, do you want to add this email to authorized email list?`;
+        console.log("this email is not authorized");
+
+
+        let buttonsDiv = document.querySelector(".buttons");
+        let buttonYes = document.createElement("button");
+        let buttonNo = document.createElement("button");
+
+        buttonYes.textContent="Yes";
+        buttonNo.textContent = "No";
+
+        buttonsDiv.appendChild(buttonYes);
+        buttonsDiv.appendChild(buttonNo); 
+
+        buttonYes.addEventListener("click", ()=>{
+    buttonNo.remove();
+    buttonYes.remove();
+
+    authorizedMails.push(mailInputValue);
+    console.log(authorizedMails);
+    textDisplay.textContent = authorizedMails;
+
+      } )
+
+    buttonNo.addEventListener("click",()=>{
+        location.reload();
+    })
+    }
+}
+
+
