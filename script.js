@@ -17,11 +17,12 @@ mailButton.addEventListener("click", ()=>{
 function checkMailValid(){
     mailInputValue = mailInput.value;
 
-    if(mailInputValue==""){
+    if(mailInputValue.includes("@")){
+        console.log("you mail is valid");
+        valid = true;
+    }else{
         console.log("invalid mail");
         valid = false;
-    }else if(mailInputValue.includes("@")){
-        valid=true;
     }
 }
 
@@ -29,8 +30,7 @@ function checkAuthorized(){
 if(!valid) return;
 for(let i =0; i<authorizedMails.length; i++){
     if(authorizedMails[i] == mailInputValue){
-
-authorized = true;
+    authorized = true;
     }
    }
 }
