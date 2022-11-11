@@ -27,6 +27,7 @@ function checkMailValid(){
 }
 
 function checkAuthorized(){
+authorized = false;
 if(!valid) return;
 for(let i =0; i<authorizedMails.length; i++){
     if(authorizedMails[i] == mailInputValue){
@@ -45,6 +46,7 @@ if(!valid) {
     if(authorized){
         textDisplay.textContent = "You are authorized!";
         console.log("this email is authorized");
+
     }else {
 
 
