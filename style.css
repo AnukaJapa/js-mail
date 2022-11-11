@@ -24,6 +24,7 @@ align-items: center;
     font-size:1.5rem;
     font-weight: bold;
     color:rgb(210, 116, 116);
+    text-shadow: 0px 0px 4px white, 0px 0px 5px white, 0px 0px 6px white;
 }
 #mailInput {
     margin:20px;
