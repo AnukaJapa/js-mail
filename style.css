@@ -14,7 +14,7 @@ padding:20px;
 
 }
 
-form {
+.inputDiv {
 display: flex;
 flex-direction: column;
 align-items: center;
