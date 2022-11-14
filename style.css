@@ -4,7 +4,6 @@
     box-sizing: border-box;
 }
 
-
 .container {
 margin:40px auto;
 width: 60%;
@@ -56,7 +55,12 @@ background-color:rgb(234, 146, 146);
 color:white;
 }
 
-h2 {
+.result {
     margin:15px;
 }
 
+ol {
+    list-style-type:decimal;
+    list-style-position: inside;
+
+}

@@ -14,6 +14,16 @@ mailButton.addEventListener("click", ()=>{
    displayResult();
 } )
 
+function makeList(array){
+    let list = "<ol>";
+
+for(let i=0; i<array.length; i++){
+    list += `<li>${array[i]}</li>`;
+}
+list += "</ol>";
+return list;
+}
+
 function checkMailValid(){
     mailInputValue = mailInput.value;
 
@@ -40,7 +50,6 @@ function displayResult(){
 if(!valid) {
     console.log("your email is not valid!");
     textDisplay.textContent= "your email is not valid";
-
     return
 }
     if(authorized){
@@ -48,7 +57,6 @@ if(!valid) {
         console.log("this email is authorized");
 
     }else {
-
 
         textDisplay.textContent = `You are not authorized, do you want to add this email to authorized email list?`;
         console.log("this email is not authorized");
@@ -64,17 +72,17 @@ if(!valid) {
         buttonsDiv.appendChild(buttonYes);
         buttonsDiv.appendChild(buttonNo); 
 
-        buttonYes.addEventListener("click", ()=>{
+    buttonYes.addEventListener("click", ()=>{
     buttonNo.remove();
     buttonYes.remove();
 
     authorizedMails.push(mailInputValue);
-    console.log(authorizedMails);
-    textDisplay.textContent = authorizedMails;
+    console.log(makeList(authorizedMails));
+    textDisplay.innerHTML = makeList(authorizedMails);
 
       } )
 
-    buttonNo.addEventListener("click",()=>{
+    buttonNo.addEventListener("click", ()=>{
         location.reload();
     })
     }
