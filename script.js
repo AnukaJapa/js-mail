@@ -41,6 +41,7 @@ for(let i = 0; i< validEmailTypes.length; i++){
 if(mailInputValue.endsWith(`${validEmailTypes[i]}`)){
     console.log("you mail is valid");
     valid = true;
+    return
 };
 
 if(!valid){
