@@ -60,7 +60,5 @@ color:white;
 }
 
 ol {
-    list-style-type:decimal;
     list-style-position: inside;
-
 }
