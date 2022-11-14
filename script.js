@@ -65,7 +65,8 @@ if(!valid) {
     textDisplay.textContent= "your email is not valid";
     return
 }
-    if(authorized){
+
+if(authorized){
         textDisplay.textContent = "You are authorized!";
         console.log("this email is authorized");
 
